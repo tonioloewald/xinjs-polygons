@@ -1,5 +1,5 @@
 import { stringToPolygon, polygonToString, simplify, area } from '../src'
-import testSvg from './test.svg'
+import svgText from './svg-test.ts'
 import { elements, xinProxy } from 'xinjs'
 
 const SVG_XMLNS = 'http://www.w3.org/2000/svg'
@@ -76,9 +76,13 @@ const { settings, handlers } = xinProxy({
   },
   handlers: {
     async loadSvg(): Promise<void> {
+      // github pages screws up the file
+      /*
       const response = await fetch(testSvg)
       const text = await response.text()
       svgContainer.innerHTML = text
+      */
+      svgContainer.innerHTML = svgText
       handlers.randomColors()
     },
     randomColors(): void { 

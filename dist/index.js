@@ -34,7 +34,6 @@ function $3bfaed78d259bc1e$export$a01e6b5107f59da5(source) {
         [],
         undefined
     ]);
-    if (polygon.length < 3) throw new Error("too few coordinates (expected at least six)");
     if (leftover !== undefined) throw new Error("odd number of coordinates (expected even)");
     return polygon;
 }
