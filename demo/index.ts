@@ -44,7 +44,7 @@ const svgElements = new Proxy({} as SvgElementCreatorMap, {
 document.head.querySelector('title').textContent = TITLE
 const main = document.querySelector('main') as HTMLElement
 
-const { h1, div, button, input } = elements
+const { h1, div, button, input, a, img } = elements
 
 let svgContainer = div({ class: 'elastic'})
 
@@ -140,6 +140,9 @@ try {
     h1(TITLE),
     div(
       { class: 'bar' },
+      a('demo', {href: 'https://tonioloewald.github.io/xinjs-polygons/'}),
+      a('github', {href: 'https://github.com/tonioloewald/xinjs-polygons#readme)'}),
+      img({alt: 'bundlejs', src: 'https://deno.bundlejs.com/?q=xinjs-polygons&badge='}),
       button('Reload', { onClick: handlers.loadSvg }),
       button('Areas', { onClick: handlers.area }),
       button('Simplify', { onClick: handlers.simplify }),
