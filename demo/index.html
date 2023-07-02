@@ -16,6 +16,7 @@
         --brand-color: #088358;
         --brand-text-color: #ECF3DD;
         --spacing: 10px;
+        --line-height: calc(var(--font-size) * 1.6);
         --heading-scale: 2;
       }
 
@@ -26,12 +27,14 @@
 
       body { 
         margin: 0;
+        line-height: var(--line-height);
       }
 
       h1 {
         background: var(--brand-color);
         color: var(--brand-text-color);
         font-size: calc(var(--font-size) * var(--heading-scale));
+        line-height: calc(var(--line-height) * var(--heading-scale));
         font-weight: 400;
         margin: 0;
         padding: var(--spacing);

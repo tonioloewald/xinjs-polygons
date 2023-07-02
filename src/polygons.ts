@@ -25,9 +25,6 @@ export function stringToPolygon(source: string): Polygon {
       return [p, undefined]
     }
   }, [[] as Polygon, undefined])
-  if (polygon.length < 3) {
-    throw new Error('too few coordinates (expected at least six)')
-  }
   if (leftover !== undefined) {
     throw new Error('odd number of coordinates (expected even)')
   }
