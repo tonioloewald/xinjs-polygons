@@ -1,0 +1,66 @@
+{
+  "name": "xinjs-polygons",
+  "version": "0.1.0",
+  "description": "utilities for dealing with polygons",
+  "main": "dist/index.js",
+  "types": "dist/types.d.ts",
+  "scripts": {
+    "start": "rm -rf www && bun parcel demo/index.html --dist-dir www -p 8787",
+    "build": "bun test && rm -rf docs && bun parcel build --public-url .",
+    "test": "bun test",
+    "update": "npm install && bun install"
+  },
+  "keywords": [
+    "xinjs",
+    "math",
+    "geometry",
+    "polygons"
+  ],
+  "author": "Tonio Loewald",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonioloewald/xinjs-polygons.git"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "^2.9.3",
+    "@parcel/transformer-typescript-types": "^2.9.3",
+    "bun-types": "latest",
+    "parcel": "latest",
+    "typescript": "^5.0.4"
+  },
+  "peerDependencies": {
+    "xinjs": "^0.4.14"
+  },
+  "files": [
+    "/cdn",
+    "/dist",
+    "/LICENSE",
+    "/README.md"
+  ],
+  "type": "module",
+  "targets": {
+    "docs": {
+      "context": "browser",
+      "distDir": "docs",
+      "source": "demo/index.html",
+      "isLibrary": false,
+      "optimize": true
+    },
+    "dist": {
+      "context": "browser",
+      "source": "src/index.ts",
+      "isLibrary": true,
+      "distDir": "dist",
+      "outputFormat": "esmodule"
+    },
+    "cdn": {
+      "context": "browser",
+      "source": "src/index.ts",
+      "distDir": "cdn",
+      "optimize": true,
+      "isLibrary": true,
+      "outputFormat": "esmodule"
+    }
+  }
+}
