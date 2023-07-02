@@ -1,6 +1,6 @@
 {
   "name": "xinjs-polygons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "utilities for dealing with polygons",
   "main": "dist/index.js",
   "types": "dist/types.d.ts",

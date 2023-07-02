@@ -46,7 +46,25 @@ const main = document.querySelector('main') as HTMLElement
 
 const { h1, div, button, input, a, img } = elements
 
-let svgContainer = div({ class: 'elastic'})
+const textRef = Symbol('text')
+
+const svgContainer = div({ 
+  class: 'elastic',
+  onMouseenter(event: Event) {
+    // @ts-expect-error
+    const text = event?.target[textRef]
+    if (text) {
+      text.classList.add('hover')
+    }
+  },
+  onMouseleave(event: Event) {
+    // @ts-expect-error
+    const text = event?.target[textRef]
+    if (text) {
+      text.classList.remove('hover')
+    }
+  }
+})
 
 function randomPct(min: number, max: number): string {
   return (Math.random() * (max - min) + min).toFixed(0) + '%'
@@ -56,8 +74,6 @@ function randomColor(): string {
   return `hsl(${(Math.random() * 360).toFixed(0)}, ${randomPct(25, 100)}, ${randomPct(25, 75)})`
 }
 
-const textRef = Symbol('text')
-
 function setText(poly: any, message: string): void {
   let text = poly[textRef]
   if (text === undefined) {
@@ -65,7 +81,6 @@ function setText(poly: any, message: string): void {
     poly[textRef] = text = svgElements.text({ x, y })
     text.style.zIndex = 1
     poly.parentElement.append(text)
-    text.setAttribute('stroke', poly.getAttribute('fill'))
   }
   text.textContent = message
 }
@@ -84,6 +99,7 @@ const { settings, handlers } = xinProxy({
       */
       svgContainer.innerHTML = svgText
       handlers.randomColors()
+      handlers.area()
     },
     randomColors(): void { 
       [...document.querySelectorAll('polygon')].forEach(poly => {
@@ -99,7 +115,7 @@ const { settings, handlers } = xinProxy({
           if (points.length > 3) {
             const a = area(...points)
             totalArea += a
-            const message = `A ${a}`
+            const message = `Area: ${a}, Points: ${points.length}`
             setText(poly, message)
           }
         } catch(e) {
@@ -128,6 +144,7 @@ const { settings, handlers } = xinProxy({
           totalRemaining += points.length
         } catch(e) {
           console.error(e)
+          setText(poly, e as string)
         }
       })
       console.log({
@@ -149,7 +166,6 @@ try {
       a('npm', {href: 'https://www.npmjs.com/package/xinjs-polygons'}),
       img({alt: 'bundlejs', src: 'https://deno.bundlejs.com/?q=xinjs-polygons&badge='}),
       button('Reload', { onClick: handlers.loadSvg }),
-      button('Areas', { onClick: handlers.area }),
       button('Simplify', { onClick: handlers.simplify }),
       input({
         title: 'threshold',
