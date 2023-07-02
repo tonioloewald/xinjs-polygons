@@ -1,4 +1,4 @@
-# xinjs-timezone-picker
+# xinjs-polygons
 
 [demo](https://tonioloewald.github.io/xinjs-polygons/) | [github](https://github.com/tonioloewald/xinjs-polygons#readme) | [npm](https://www.npmjs.com/package/xinjs-polygons) | ![bundlejs](https://deno.bundlejs.com/?q=xinjs-polygons&badge=)
 

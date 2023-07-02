@@ -146,6 +146,7 @@ try {
       { class: 'bar' },
       a('demo', {href: 'https://tonioloewald.github.io/xinjs-polygons/'}),
       a('github', {href: 'https://github.com/tonioloewald/xinjs-polygons#readme)'}),
+      a('npm', {href: 'https://www.npmjs.com/package/xinjs-polygons'}),
       img({alt: 'bundlejs', src: 'https://deno.bundlejs.com/?q=xinjs-polygons&badge='}),
       button('Reload', { onClick: handlers.loadSvg }),
       button('Areas', { onClick: handlers.area }),
